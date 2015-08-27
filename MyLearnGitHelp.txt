@@ -6,6 +6,20 @@ git init
 git add
 				把文件修改添加到暂存区
 				$ git add readme.txt
+				
+				
+			
+git rm 
+			<filename>
+				删除文件
+				（本地文件会被删除）
+
+				$ git rm test.txt
+				rm 'test.txt'
+				$ git commit -m "remove test.txt"
+				[master d17efd8] remove test.txt
+				1 file changed, 1 deletion(-)
+				delete mode 100644 test.txt
 
 git commit
 				把暂存区的所有内容提交到当前分支
@@ -49,7 +63,7 @@ git diff
 				
 				
 			--cached
-				查看缓存与版本库的差别
+				查看暂存区与版本库的差别
 			
 				$ git diff readme.txt 
 				diff --git a/readme.txt b/readme.txt
@@ -120,7 +134,7 @@ git checkout
 			
 				$ git checkout -- readme.txt
 			
-			<分支名称>
+			<分支名称>	
 				切换到新分支
 					把HEAD指针指向分支的头部
 				
@@ -130,41 +144,16 @@ git checkout
 			
 				$ git checkout -b dev
 				Switched to a new branch 'dev'
-			
-git rm 
-			<filename>
-				删除文件
-				（本地文件会被删除）
-
-				$ git rm test.txt
-				rm 'test.txt'
-				$ git commit -m "remove test.txt"
-				[master d17efd8] remove test.txt
-				1 file changed, 1 deletion(-)
-				delete mode 100644 test.txt
-			
-			
-			
-git push origin master
-
-			把本地master分支的最新修改推送至GitHub
-
-git clone		
-			<地址>
-				远程克隆一个库
-
-				$ git clone git@github.com:michaelliao/gitskills.git
-				Cloning into 'gitskills'...
-				remote: Counting objects: 3, done.
-				remote: Total 3 (delta 0), reused 0 (delta 0)
-				Receiving objects: 100% (3/3), done.
-
-				$ cd gitskills
-				$ ls
-				README.md
-
-			
-			
+				
+			-b <分支名称> origin/<远程对应分支名称>
+				不改变本地内容，只确立对应关系
+				
+				$ git checkout -b dev origin/dev
+				
+				
+				
+				
+				
 git branch
 
 				查看当前分支
@@ -186,6 +175,61 @@ git branch
 				
 				
 				$ git branch -d dev
+				
+			-D <分支名称>
+				强行删除分支，即使未与主线合并
+				
+			--set-upstream-to=origin/<远程分支名称> <分支名称>	
+			
+				设置对应远程仓库的分支
+
+				$ git branch --set-upstream-to=origin/master master	
+				
+				
+				
+
+			
+			
+			
+git push 
+				把本地分支的最新修改推送至远程分支
+					需绑定
+						合并有冲突会提示
+					
+			origin <远程分支名称>
+				把当前分支推送到指定远程分支 
+					不需绑定
+				$ git push origin master
+				
+git pull 
+				把远程内容拉回本地
+				
+			origin <远程分支名称>
+				把指定远程分支最新文件拉到当前分支
+					不需绑定
+				$ git pull origin master	
+				
+				如有冲突，冲突内容会直接写入本地文件
+					像处理merge失败一样处理它
+				
+
+
+git clone		
+			<地址>
+				远程克隆一个库
+
+				$ git clone git@github.com:michaelliao/gitskills.git
+				Cloning into 'gitskills'...
+				remote: Counting objects: 3, done.
+				remote: Total 3 (delta 0), reused 0 (delta 0)
+				Receiving objects: 100% (3/3), done.
+
+				$ cd gitskills
+				$ ls
+				README.md
+
+			
+			
 
 				
 git merge
@@ -207,18 +251,46 @@ git merge
 				
 				$ git merge --no-ff -m "merge with no-ff" dev
 				
+
+git stash
+				保存工作现场
+					可以进行其他工作
+				
+				$ git stash
+				Saved working directory and index state WIP on dev: 6224937 add merge
+				HEAD is now at 6224937 add merge
+			
+			list
+				查看stash内容
+			
+			pop	
+				恢复现场并删除最上层stash内容
+				
+			apply
+				恢复现场不删除最上层stash内容
+			
+			apply 'stash@{ID}'
+				恢复指定stash
+				
+			drop
+				删除最底层stash内容
+				
+			drop 'stash@{ID}'
+				删除指定stash内容
 				
 				
+git remote
+				查看远程仓库信息
 				
+				$ git remote
+				origin
 				
+			-v
+				显示更详细的信息
 				
-				
-				
-				
-				
-				
-				
-				
+				$ git remote -v
+				origin  git@github.com:michaelliao/learngit.git (fetch)
+				origin  git@github.com:michaelliao/learngit.git (push)
 				
 				
 				
@@ -394,11 +466,22 @@ help git merge
 		使用--graph也更为美观
 	
 		
+help git stash
+		
+		临时休息去吃个饭吧~
+		或者离开当前工作去其他时间线修复紧急bug
+
+
+		
+help git push 
+		完工后push到github
+		早push早下班
+		
+		push失败只能pull网络上的最新版来融合
 		
 		
-		
-		
-		
-		
+help git pull
+		获取网络最新版的文件，
+		开工之前先pull一下吧~~~
 		
 		
