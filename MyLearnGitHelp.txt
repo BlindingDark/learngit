@@ -1,0 +1,131 @@
+git init
+			把当前目录变成Git可以管理的仓库
+			$ git init
+			Initialized empty Git repository in /Users/michael/learngit/.git/
+
+git add
+			把文件放到Git仓库（准备提交）
+			$ git add readme.txt
+
+git commit
+			提交add的文件（正式提交）
+			-m "备注"
+			
+			$ git commit -m "wrote a readme file"
+			[master (root-commit) cb926e7] wrote a readme file
+			1 file changed, 2 insertions(+)
+			create mode 100644 readme.txt
+			
+			$ git add file1.txt
+			$ git add file2.txt file3.txt
+			$ git commit -m "add 3 files."
+
+git status
+			查看当前文件的修改状态
+			
+			$ git status
+			# On branch master
+			# Changes not staged for commit:
+			#   (use "git add <file>..." to update what will be committed)
+			#   (use "git checkout -- <file>..." to discard changes in working directory)
+			#
+			#    modified:   readme.txt
+			#
+			no changes added to commit (use "git add" and/or "git commit -a")
+			
+git diff
+			比较改动情况
+			$ git diff readme.txt 
+			diff --git a/readme.txt b/readme.txt
+			index 46d49bf..9247db6 100644
+			--- a/readme.txt
+			+++ b/readme.txt
+			@@ -1,2 +1,2 @@
+			-Git is a version control system.
+			+Git is a distributed version control system.
+			 Git is free software.
+……………………………………………………
+help
+	
+help git init	
+		创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：
+
+		$ mkdir learngit
+		$ cd learngit
+		$ pwd
+		/Users/michael/learngit
+
+		pwd命令用于显示当前目录。在我的Mac上，这个仓库位于/Users/michael/learngit。
+
+		如果你使用Windows系统，为了避免遇到各种莫名其妙的问题，请确保目录名（包括父目录）不包含中文。
+
+		第二步，通过git init命令把这个目录变成Git可以管理的仓库：
+
+		$ git init
+		Initialized empty Git repository in /Users/michael/learngit/.git/
+		
+		
+help git add
+
+		编写一个readme.txt文件，内容如下：
+
+		Git is a version control system.
+		Git is free software.
+		一定要放到learngit目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。
+
+		和把大象放到冰箱需要3步相比，把一个文件放到Git仓库只需要两步。
+
+		第一步，用命令git add告诉Git，把文件添加到仓库：
+
+		$ git add readme.txt
+		执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。
+
+help git commit
+
+		第二步，用命令git commit告诉Git，把文件提交到仓库：
+
+		$ git commit -m "wrote a readme file"
+		[master (root-commit) cb926e7] wrote a readme file
+		1 file changed, 2 insertions(+)
+		create mode 100644 readme.txt
+		
+		commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：
+
+		$ git add file1.txt
+		$ git add file2.txt file3.txt
+		$ git commit -m "add 3 files."
+
+help git status
+
+		修改readme.txt文件，改成如下内容：
+
+		Git is a distributed version control system.
+		Git is free software.
+		现在，运行git status命令看看结果：
+
+		$ git status
+		# On branch master
+		# Changes not staged for commit:
+		#   (use "git add <file>..." to update what will be committed)
+		#   (use "git checkout -- <file>..." to discard changes in working directory)
+		#
+		#    modified:   readme.txt
+		#
+		no changes added to commit (use "git add" and/or "git commit -a")
+		git status命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，readme.txt被修改过了，但还没有准备提交的修改。
+		
+help git diff
+
+		虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容，自然是很好的。
+		比如你休假两周从国外回来，第一天上班时，已经记不清上次怎么修改的readme.txt，所以，需要用git diff这个命令看看：
+		$ git diff readme.txt 
+		diff --git a/readme.txt b/readme.txt
+		index 46d49bf..9247db6 100644
+		--- a/readme.txt
+		+++ b/readme.txt
+		@@ -1,2 +1,2 @@
+		-Git is a version control system.
+		+Git is a distributed version control system.
+		 Git is free software.
+		git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，
+		可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。
