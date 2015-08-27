@@ -37,7 +37,15 @@ git diff
 			比较改动情况
 			--标识前版本
 			++标识后版本
-			git diff HEAD -- <filename>命令可以查看工作区和版本库里面最新版本的区别
+			
+			默认查看工作区与缓存区的差别
+			
+			git diff HEAD -- <filename>
+			查看版本库里面最新版本和工作区的区别
+			HEAD代表的是最近的一次版本库的信息
+			
+			git diff --cached
+			查看缓存与版本库的差别
 			
 			$ git diff readme.txt 
 			diff --git a/readme.txt b/readme.txt
@@ -48,18 +56,6 @@ git diff
 			-Git is a version control system.
 			+Git is a distributed version control system.
 			Git is free software.
-			
-			$ git diff HEAD -- readme.txt 
-			diff --git a/readme.txt b/readme.txt
-			index 76d770f..a9c5755 100644
-			--- a/readme.txt
-			+++ b/readme.txt
-			@@ -1,4 +1,4 @@
-			 Git is a distributed version control system.
-			 Git is free software distributed under the GPL.
-			 Git has a mutable index called stage.
-			-Git tracks changes.
-			+Git tracks changes of files.
 			 
 			 
 git log
