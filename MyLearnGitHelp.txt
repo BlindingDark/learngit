@@ -124,6 +124,11 @@ git rm
 			[master d17efd8] remove test.txt
 			1 file changed, 1 deletion(-)
 			delete mode 100644 test.txt
+			
+			
+			
+git push origin master
+			把本地master分支的最新修改推送至GitHub
 
 			
 			
