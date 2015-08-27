@@ -64,6 +64,7 @@ git diff
 			 
 git log
 				显示从最近到最远的提交日志
+					从当前HEAD指针往下所有版本
 
 			
 			--pretty=oneline 
@@ -121,6 +122,7 @@ git checkout
 			
 			<分支名称>
 				切换到新分支
+					把HEAD指针指向分支的头部
 				
 			-b <分支名称>
 			
