@@ -130,6 +130,11 @@ git checkout
 			
 				$ git checkout -b dev
 				Switched to a new branch 'dev'
+				
+			-b <分支名称> origin/<远程对应分支名称>
+				不改变本地内容，只确立对应关系
+				
+				$ git checkout -b dev origin/dev
 			
 git rm 
 			<filename>
@@ -186,7 +191,10 @@ git branch
 				
 				
 				$ git branch -d dev
-
+				
+			-D <分支名称>
+				强行删除分支，即使未与主线合并
+				
 				
 git merge
 			<分支名称>
@@ -235,8 +243,18 @@ git stash
 				删除指定stash内容
 				
 				
+git remote
+				查看远程仓库信息
 				
+				$ git remote
+				origin
 				
+			-v
+				显示更详细的信息
+				
+				$ git remote -v
+				origin  git@github.com:michaelliao/learngit.git (fetch)
+				origin  git@github.com:michaelliao/learngit.git (push)
 				
 				
 				
