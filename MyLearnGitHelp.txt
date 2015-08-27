@@ -112,7 +112,9 @@ git checkout
 			
 				$ git checkout -- readme.txt
 			
-			
+			<分支名称>
+				切换到新分支
+				
 			-b <分支名称>
 			
 				创建新分支，并且切换到新分支
