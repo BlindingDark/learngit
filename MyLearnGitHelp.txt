@@ -207,14 +207,32 @@ git merge
 				
 				$ git merge --no-ff -m "merge with no-ff" dev
 				
+
+git stash
+				保存工作现场
+					可以进行其他工作
 				
+				$ git stash
+				Saved working directory and index state WIP on dev: 6224937 add merge
+				HEAD is now at 6224937 add merge
+			
+			list
+				查看stash内容
+			
+			pop	
+				恢复现场并删除最上层stash内容
 				
+			apply
+				恢复现场不删除最上层stash内容
+			
+			apply 'stash@{ID}'
+				恢复指定stash
 				
+			drop
+				删除最底层stash内容
 				
-				
-				
-				
-				
+			drop 'stash@{ID}'
+				删除指定stash内容
 				
 				
 				
@@ -394,11 +412,14 @@ help git merge
 		使用--graph也更为美观
 	
 		
+help git stash
+		
+		临时休息去吃个饭吧~
+		或者离开当前工作去其他时间线修复紧急bug
 		
 		
 		
 		
 		
-		
-		
+	
 		
