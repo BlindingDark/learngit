@@ -113,10 +113,19 @@ git checkout
 			$ git checkout -- readme.txt
 			
 		
-		
-			
-			
-			
+git rm 
+			<filename>
+				从暂存区删除文件。
+				（本地文件会被删除）
+				（可通过git check -- <filename>从版本库恢复）
+				
+			$ git rm test.txt
+			rm 'test.txt'
+			$ git commit -m "remove test.txt"
+			[master d17efd8] remove test.txt
+			1 file changed, 1 deletion(-)
+			delete mode 100644 test.txt
+
 			
 			
 			
