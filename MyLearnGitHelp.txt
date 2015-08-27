@@ -73,6 +73,13 @@ git log
 				commit 3628164fb26d48395383f8f31179f24e0882e1e0
 				Author: Michael Liao <askxuefeng@gmail.com>
 				Date:   Tue Aug 20 15:11:49 2013 +0800
+				
+			--graph
+				可以看到分支合并图
+			
+			--abbrev-commit
+				简化显示
+				不显示完整标识码
 
 git reflog
 				用来记录你的每一次更新：
@@ -182,13 +189,14 @@ git branch
 git merge
 			<分支名称>
 				把指定分支与当前分支融合
-					默认为快速
 				
 				$ git merge dev
 				Updating d17efd8..fec145a
 				Fast-forward
-				 readme.txt |    1 +
-				 1 file changed, 1 insertion(+)
+				readme.txt |    1 +
+				1 file changed, 1 insertion(+)
+				 
+					失败后需要手动修改，然后再次commit，完成融合
 
 				
 				
