@@ -175,7 +175,23 @@ git branch
 				
 				
 				$ git branch -d dev
-			
+
+				
+git merge
+			<分支名称>
+				把指定分支与当前分支融合
+					默认为快速
+				
+				$ git merge dev
+				Updating d17efd8..fec145a
+				Fast-forward
+				 readme.txt |    1 +
+				 1 file changed, 1 insertion(+)
+
+				
+				
+				
+				
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -235,9 +251,9 @@ help git commit
 		
 		commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：
 
-		$ git add file1.txt
-		$ git add file2.txt file3.txt
-		$ git commit -m "add 3 files."
+			$ git add file1.txt
+			$ git add file2.txt file3.txt
+			$ git commit -m "add 3 files."
 
 help git status
 
@@ -278,28 +294,6 @@ help git diff
 help git log
 		显示从最近到最远的提交日志
 
-		$ git log
-		commit 3628164fb26d48395383f8f31179f24e0882e1e0
-		Author: Michael Liao <askxuefeng@gmail.com>
-		Date:   Tue Aug 20 15:11:49 2013 +0800
-
-		append GPL
-
-		commit ea34578d5496d7dd233c827ed32a8cd576c5ee85
-		Author: Michael Liao <askxuefeng@gmail.com>
-		Date:   Tue Aug 20 14:53:12 2013 +0800
-
-			add distributed
-
-		commit cb926e7ea50ad11b8f9e909c05226233bf755030
-		Author: Michael Liao <askxuefeng@gmail.com>
-		Date:   Mon Aug 19 17:51:55 2013 +0800
-
-			wrote a readme file		
-			
-			
-		我们可以看到3次提交，
-
 		如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：
 
 		$ git log --pretty=oneline
@@ -311,18 +305,18 @@ help git log
 		
 		
 help git reflog
-		用来记录你的每一次命令：
 
-		$ git reflog
-		ea34578 HEAD@{0}: reset: moving to HEAD^
-		3628164 HEAD@{1}: commit: append GPL
-		ea34578 HEAD@{2}: commit: add distributed
-		cb926e7 HEAD@{3}: commit (initial): wrote a readme file
-			
 		回到未来的时候可以看看版本号
-			
+		用来记录你的每一次命令
+
+			$ git reflog
+			ea34578 HEAD@{0}: reset: moving to HEAD^
+			3628164 HEAD@{1}: commit: append GPL
+			ea34578 HEAD@{2}: commit: add distributed
+			cb926e7 HEAD@{3}: commit (initial): wrote a readme file
+
 help git reset 
-		在版本之间进行穿梭
+
 			
 		git reset --hard <16进制唯一版本标识代码>
 			代码不需要全写
@@ -330,59 +324,45 @@ help git reset
 			HEAD为指向当前分支的指针，上移指针可以回到以前版本。
 			
 			通过git reflog来跟踪所有更改。
-			
-		git reset HEAD <filename>
-			可以把暂存区的修改撤销掉（unstage），重新放回工作区：
 
-		$ git reset HEAD readme.txt
-		Unstaged changes after reset:
-		M       readme.txt
 
 			
 help git checkout 
 			
-		-- <filename>
-
-			$ git checkout -- readme.txt
-			回到git add时的状态。
-			把暂存区内容写回本地
-
-			（可以先git reset HEAD <filename>，从版本库中把文件写入暂存区，
-			再用git checkout -- <filename>来恢复）
-				
-				
-		-b
+		（可以先git reset HEAD <filename>，从版本库中把文件写入暂存区，
+		再用git checkout -- <filename>来恢复误删文件
 			
-			创建并切换到新分支
-			相当于以下两条命令：
+		使用 -b 创建并切换到新分支
+		相当于以下两条命令：
 
 			$ git branch dev
 			$ git checkout dev
 			Switched to branch 'dev'
+
 			
-		<分支名称>
-		
-			切换到分支
-			
-			$ git checkout dev
 help git branch
 
-			查看当前分支
-
+		查看当前分支
+		当前分支前面会标一个*号
+		
 			$ git branch
 			* dev
 			master
 			
-			当前分支前面会标一个*号
-			
-		<分支名称>
-			
-				创建新分支
-				
-			$ git branch dev
-			
-		-d <分支名称>
-				删除分支
-			$ git branch -d dev
 
+
+
+help git merge
+
+		合并的快进模式，也就是直接把master指向dev的当前提交，所以合并速度非常快。
+		当然，也不是每次合并都能Fast-forward
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
