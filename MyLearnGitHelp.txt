@@ -202,6 +202,7 @@ git merge
 					失败后需要手动修改，然后再次commit，完成融合
 
 			--no-ff -m "备注" <分支名称>
+				【推荐】
 				使用普通融合，会保留分支信息
 				
 				$ git merge --no-ff -m "merge with no-ff" dev
@@ -388,7 +389,9 @@ help git merge
 
 		合并的快进模式，也就是直接把master指向dev的当前提交，所以合并速度非常快。
 		当然，也不是每次合并都能Fast-forward
-		
+		【推荐】使用--no-ff -m "备注" <分支名称>
+		这样在master线上就看不到dev线上的内容，这样更加整洁
+	
 		
 		
 		
