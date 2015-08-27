@@ -4,11 +4,11 @@ git init
 			Initialized empty Git repository in /Users/michael/learngit/.git/
 
 git add
-			把文件放到Git仓库（准备提交）
+			把文件放到Git仓库（把文件修改添加到暂存区）
 			$ git add readme.txt
 
 git commit
-			提交add的文件（正式提交）
+			提交add的文件（把暂存区的所有内容提交到当前分支）
 			-m "备注"
 			
 			$ git commit -m "wrote a readme file"
@@ -35,6 +35,10 @@ git status
 			
 git diff
 			比较改动情况
+			--标识前版本
+			++标识后版本
+			git diff HEAD -- <filename>命令可以查看工作区和版本库里面最新版本的区别
+			
 			$ git diff readme.txt 
 			diff --git a/readme.txt b/readme.txt
 			index 46d49bf..9247db6 100644
@@ -43,8 +47,19 @@ git diff
 			@@ -1,2 +1,2 @@
 			-Git is a version control system.
 			+Git is a distributed version control system.
-			 Git is free software.
-			 
+			Git is free software.
+			
+			$ git diff HEAD -- readme.txt 
+			diff --git a/readme.txt b/readme.txt
+			index 76d770f..a9c5755 100644
+			--- a/readme.txt
+			+++ b/readme.txt
+			@@ -1,4 +1,4 @@
+			 Git is a distributed version control system.
+			 Git is free software distributed under the GPL.
+			 Git has a mutable index called stage.
+			-Git tracks changes.
+			+Git tracks changes of files.
 			 
 			 
 git log
@@ -85,8 +100,27 @@ git reset
 			HEAD is now at 3628164 append GPL
 			
 			
-……………………………………………………
-help
+			
+			
+			
+			
+			
+			
+			
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^help^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
 	
 help git init	
 		创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：
