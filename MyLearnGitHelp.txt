@@ -4,11 +4,11 @@ git init
 			Initialized empty Git repository in /Users/michael/learngit/.git/
 
 git add
-			把文件放到Git仓库（把文件修改添加到暂存区）
+			把文件修改添加到暂存区
 			$ git add readme.txt
 
 git commit
-			提交add的文件（把暂存区的所有内容提交到当前分支）
+			把暂存区的所有内容提交到当前分支
 			-m "备注"
 			
 			$ git commit -m "wrote a readme file"
@@ -72,7 +72,7 @@ git log
 			Date:   Tue Aug 20 15:11:49 2013 +0800
 
 git reflog
-			用来记录你的每一次命令：
+			用来记录你的每一次更新：
 
 			$ git reflog
 			ea34578 HEAD@{0}: reset: moving to HEAD^
@@ -82,9 +82,11 @@ git reflog
 			
 			
 git reset 
-			在版本之间进行回退与切换，撤销暂存区修改
+			在版本之间进行回退与切换
+			把版本库的文件写回暂存区
+
 			
-			--hard	<版本号>			//todo
+			--hard	<版本号>			//todo可能是直接更改本地文件
 				HEAD^表示上一版本，HEAD^^表示上上一版本
 
 			$ git reset --hard 3628164
@@ -92,7 +94,7 @@ git reset
 
 			
 			HEAD <filename>
-				把暂存区的修改撤销，撤销add，本地修改后的文本不改变
+				把HEAD <filename>写回暂存区，撤销add，本地修改后的文本不改变
 				
 			$ git reset HEAD readme.txt
 			Unstaged changes after reset:
@@ -103,21 +105,18 @@ git reset
 git checkout 
 			
 			-- <filename>
-				撤销工作区的本地修改
-				让这个文件回到最近一次git commit（修改后还没有被放到暂存区）或git add时的状态
+				把暂存区内容写回本地
 				本地文件改变
-				
-				（先用git reset HEAD <filename>，撤销add，再用 git checkout -- <filename>
-				可以撤销add和本地更改）
+
 				
 			$ git checkout -- readme.txt
 			
 		
 git rm 
 			<filename>
-				从暂存区删除文件。
+				删除文件
 				（本地文件会被删除）
-				（可通过git check -- <filename>从版本库恢复）
+
 				
 			$ git rm test.txt
 			rm 'test.txt'
@@ -296,18 +295,14 @@ help git reset
 			
 help git checkout 
 			
-			-- <filename>可以丢弃工作区的修改：
+			-- <filename>
 
-			$ git checkout -- readme.txt
-			命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
-
-			一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
-
-			一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
-
-			总之，就是让这个文件回到最近一次git commit或git add时的状态。
-			
-			
-			
+				$ git checkout -- readme.txt
+				回到git add时的状态。
+				
+				（先用git reset HEAD <filename>，撤销add，再用 git checkout -- <filename>
+				可以撤销add和本地更改）
+				（可以先git reset HEAD <filename>，从版本库中把文件写入暂存区，
+				再用git checkout -- <filename>来恢复）
 		
 		
