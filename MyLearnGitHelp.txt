@@ -189,7 +189,7 @@ git branch
 git merge
 			<分支名称>
 				把指定分支与当前分支融合
-					备注会变成融合进来的分支的备注
+					备注会变成融合进来的分支的备注，并自动发布
 					
 				$ git merge dev
 				Updating d17efd8..fec145a
