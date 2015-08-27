@@ -1,154 +1,180 @@
 git init
-			把当前目录变成Git可以管理的仓库
-			$ git init
-			Initialized empty Git repository in /Users/michael/learngit/.git/
+				把当前目录变成Git可以管理的仓库
+				$ git init
+				Initialized empty Git repository in /Users/michael/learngit/.git/
 
 git add
-			把文件修改添加到暂存区
-			$ git add readme.txt
+				把文件修改添加到暂存区
+				$ git add readme.txt
 
 git commit
-			把暂存区的所有内容提交到当前分支
+				把暂存区的所有内容提交到当前分支
 			-m "备注"
 			
-			$ git commit -m "wrote a readme file"
-			[master (root-commit) cb926e7] wrote a readme file
-			1 file changed, 2 insertions(+)
-			create mode 100644 readme.txt
-			
-			$ git add file1.txt
-			$ git add file2.txt file3.txt
-			$ git commit -m "add 3 files."
+				$ git commit -m "wrote a readme file"
+				[master (root-commit) cb926e7] wrote a readme file
+				1 file changed, 2 insertions(+)
+				create mode 100644 readme.txt
+				
+				$ git add file1.txt
+				$ git add file2.txt file3.txt
+				$ git commit -m "add 3 files."
 
 git status
-			查看当前文件的修改状态
-			
-			$ git status
-			# On branch master
-			# Changes not staged for commit:
-			#   (use "git add <file>..." to update what will be committed)
-			#   (use "git checkout -- <file>..." to discard changes in working directory)
-			#
-			#    modified:   readme.txt
-			#
-			no changes added to commit (use "git add" and/or "git commit -a")
+
+				查看当前文件的修改状态
+				
+				$ git status
+				# On branch master
+				# Changes not staged for commit:
+				#   (use "git add <file>..." to update what will be committed)
+				#   (use "git checkout -- <file>..." to discard changes in working directory)
+				#
+				#    modified:   readme.txt
+				#
+				no changes added to commit (use "git add" and/or "git commit -a")
 			
 git diff
-			比较改动情况
-			--标识前版本
-			++标识后版本
+				比较改动情况
+				(--标识前版本
+				++标识后版本)
 			
-			默认查看工作区与暂存区的差别
+				查看工作区与暂存区的差别
 			
-			git diff HEAD -- <filename>
-			查看版本库里面最新版本和工作区的区别
-			HEAD代表的是最近的一次版本库的信息
+			HEAD -- <filename>
 			
-			git diff --cached
-			查看缓存与版本库的差别
+				查看版本库里面最新版本和工作区的区别
+				
+				$ git diff HEAD -- <filename>
+				
+				
+			--cached
+				查看缓存与版本库的差别
 			
-			$ git diff readme.txt 
-			diff --git a/readme.txt b/readme.txt
-			index 46d49bf..9247db6 100644
-			--- a/readme.txt
-			+++ b/readme.txt
-			@@ -1,2 +1,2 @@
-			-Git is a version control system.
-			+Git is a distributed version control system.
-			Git is free software.
+				$ git diff readme.txt 
+				diff --git a/readme.txt b/readme.txt
+				index 46d49bf..9247db6 100644
+				--- a/readme.txt
+				+++ b/readme.txt
+				@@ -1,2 +1,2 @@
+				-Git is a version control system.
+				+Git is a distributed version control system.
+				Git is free software.
 			 
 			 
 git log
-			显示从最近到最远的提交日志
+				显示从最近到最远的提交日志
 
 			
 			--pretty=oneline 
 				单行显示
-						
-						
-			$ git log
-			commit 3628164fb26d48395383f8f31179f24e0882e1e0
-			Author: Michael Liao <askxuefeng@gmail.com>
-			Date:   Tue Aug 20 15:11:49 2013 +0800
+				
+				$ git log
+				commit 3628164fb26d48395383f8f31179f24e0882e1e0
+				Author: Michael Liao <askxuefeng@gmail.com>
+				Date:   Tue Aug 20 15:11:49 2013 +0800
 
 git reflog
-			用来记录你的每一次更新：
+				用来记录你的每一次更新：
 
-			$ git reflog
-			ea34578 HEAD@{0}: reset: moving to HEAD^
-			3628164 HEAD@{1}: commit: append GPL
-			ea34578 HEAD@{2}: commit: add distributed
-			cb926e7 HEAD@{3}: commit (initial): wrote a readme file
+				$ git reflog
+				ea34578 HEAD@{0}: reset: moving to HEAD^
+				3628164 HEAD@{1}: commit: append GPL
+				ea34578 HEAD@{2}: commit: add distributed
+				cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 			
 			
 git reset 
-			在版本之间进行回退与切换
-			把版本库的文件写回暂存区
+				在版本之间进行回退与切换
+				把版本库的文件写回暂存区
 
 			
 			--hard	<版本号>			//todo可能是直接更改本地文件
-				HEAD^表示上一版本，HEAD^^表示上上一版本
+				（HEAD^表示上一版本，HEAD^^表示上上一版本）
 
-			$ git reset --hard 3628164
-			HEAD is now at 3628164 append GPL			
+				$ git reset --hard 3628164
+				HEAD is now at 3628164 append GPL			
 
 			
 			HEAD <filename>
 				把HEAD <filename>写回暂存区，撤销add，本地修改后的文本不改变
 				
-			$ git reset HEAD readme.txt
-			Unstaged changes after reset:
-			M       readme.txt
+				$ git reset HEAD readme.txt
+				Unstaged changes after reset:
+				M       readme.txt
 			
 			
-						
 git checkout 
 			
 			-- <filename>
 				把暂存区内容写回本地
 				本地文件改变
-
-				
-			$ git checkout -- readme.txt
 			
-		
+				$ git checkout -- readme.txt
+			
+			
+			-b <分支名称>
+			
+				创建新分支，并且切换到新分支
+			
+				$ git checkout -b dev
+				Switched to a new branch 'dev'
+			
 git rm 
 			<filename>
 				删除文件
 				（本地文件会被删除）
 
-				
-			$ git rm test.txt
-			rm 'test.txt'
-			$ git commit -m "remove test.txt"
-			[master d17efd8] remove test.txt
-			1 file changed, 1 deletion(-)
-			delete mode 100644 test.txt
+				$ git rm test.txt
+				rm 'test.txt'
+				$ git commit -m "remove test.txt"
+				[master d17efd8] remove test.txt
+				1 file changed, 1 deletion(-)
+				delete mode 100644 test.txt
 			
 			
 			
 git push origin master
+
 			把本地master分支的最新修改推送至GitHub
 
-git clone
-			
+git clone		
 			<地址>
-			
-			远程克隆一个库
+				远程克隆一个库
 
-			$ git clone git@github.com:michaelliao/gitskills.git
-			Cloning into 'gitskills'...
-			remote: Counting objects: 3, done.
-			remote: Total 3 (delta 0), reused 0 (delta 0)
-			Receiving objects: 100% (3/3), done.
+				$ git clone git@github.com:michaelliao/gitskills.git
+				Cloning into 'gitskills'...
+				remote: Counting objects: 3, done.
+				remote: Total 3 (delta 0), reused 0 (delta 0)
+				Receiving objects: 100% (3/3), done.
 
-			$ cd gitskills
-			$ ls
-			README.md
+				$ cd gitskills
+				$ ls
+				README.md
 
 			
 			
+git branch
+
+				查看当前分支
+
+				$ git branch
+				* dev
+				master
 			
+					（当前分支前面会标一个*号）
+			
+			<分支名称>
+				创建新分支
+				
+				
+				$ git branch dev
+			
+			-d <分支名称>
+				删除分支
+				
+				
+				$ git branch -d dev
 			
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -285,45 +311,78 @@ help git log
 		
 		
 help git reflog
-			用来记录你的每一次命令：
+		用来记录你的每一次命令：
 
-			$ git reflog
-			ea34578 HEAD@{0}: reset: moving to HEAD^
-			3628164 HEAD@{1}: commit: append GPL
-			ea34578 HEAD@{2}: commit: add distributed
-			cb926e7 HEAD@{3}: commit (initial): wrote a readme file
+		$ git reflog
+		ea34578 HEAD@{0}: reset: moving to HEAD^
+		3628164 HEAD@{1}: commit: append GPL
+		ea34578 HEAD@{2}: commit: add distributed
+		cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 			
-			回到未来的时候可以看看版本号
+		回到未来的时候可以看看版本号
 			
 help git reset 
-			在版本之间进行穿梭
+		在版本之间进行穿梭
 			
-			git reset --hard <16进制唯一版本标识代码>
+		git reset --hard <16进制唯一版本标识代码>
 			代码不需要全写
-			HEAD^快速回到前一版本
-			HEAD为指向当前时间线的指针，上移指针可以回到以前版本。
-			在以前版本处重新进行新版本更新会产生版本分支。
+
+			HEAD为指向当前分支的指针，上移指针可以回到以前版本。
 			
 			通过git reflog来跟踪所有更改。
 			
-			git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：
+		git reset HEAD <filename>
+			可以把暂存区的修改撤销掉（unstage），重新放回工作区：
 
-			$ git reset HEAD readme.txt
-			Unstaged changes after reset:
-			M       readme.txt
-			
-			git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+		$ git reset HEAD readme.txt
+		Unstaged changes after reset:
+		M       readme.txt
+
 			
 help git checkout 
 			
-			-- <filename>
+		-- <filename>
 
-				$ git checkout -- readme.txt
-				回到git add时的状态。
+			$ git checkout -- readme.txt
+			回到git add时的状态。
+			把暂存区内容写回本地
+
+			（可以先git reset HEAD <filename>，从版本库中把文件写入暂存区，
+			再用git checkout -- <filename>来恢复）
 				
-				（先用git reset HEAD <filename>，撤销add，再用 git checkout -- <filename>
-				可以撤销add和本地更改）
-				（可以先git reset HEAD <filename>，从版本库中把文件写入暂存区，
-				再用git checkout -- <filename>来恢复）
+				
+		-b
+			
+			创建并切换到新分支
+			相当于以下两条命令：
+
+			$ git branch dev
+			$ git checkout dev
+			Switched to branch 'dev'
+			
+		<分支名称>
 		
+			切换到分支
+			
+			$ git checkout dev
+help git branch
+
+			查看当前分支
+
+			$ git branch
+			* dev
+			master
+			
+			当前分支前面会标一个*号
+			
+		<分支名称>
+			
+				创建新分支
+				
+			$ git branch dev
+			
+		-d <分支名称>
+				删除分支
+			$ git branch -d dev
+
 		
