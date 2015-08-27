@@ -82,24 +82,30 @@ git reflog
 			
 			
 git reset 
-			在版本之间进行回退与切换
+			在版本之间进行回退与切换，撤销暂存区修改
 			
-			--hard				//todo
-			HEAD
-				当前版本
-			HEAD^
-				上一版本
-			HEAD^^
-				上上一版本
-				
+			--hard	<版本号>			//todo
+				HEAD^表示上一版本，HEAD^^表示上上一版本
+
 			$ git reset --hard 3628164
-			HEAD is now at 3628164 append GPL
+			HEAD is now at 3628164 append GPL			
+
 			
+			HEAD <filename>
+				把暂存区的修改撤销，重新放回工作区（暂存区文件被清理）
+				
+			$ git reset HEAD readme.txt
+			Unstaged changes after reset:
+			M       readme.txt
+			
+			
+						
 git checkout 
 			
-			-- filename
-				丢弃工作区的修改
-				让这个文件回到最近一次git commit或git add时的状态
+			-- <filename>
+				撤销工作区的修改
+				让这个文件回到最近一次git commit（当暂存区为空）或git add时的状态
+				暂存区文件【不被清理】
 				
 			$ git checkout -- readme.txt
 		
@@ -266,9 +272,17 @@ help git reset
 			
 			通过git reflog来跟踪所有更改。
 			
+			git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：
+
+			$ git reset HEAD readme.txt
+			Unstaged changes after reset:
+			M       readme.txt
+			
+			git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+			
 help git checkout 
 			
-			-- file可以丢弃工作区的修改：
+			-- <filename>可以丢弃工作区的修改：
 
 			$ git checkout -- readme.txt
 			命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
@@ -277,7 +291,9 @@ help git checkout
 
 			一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 
-			总之，就是让这个文件回到最近一次git commit或git add时的状态。			
+			总之，就是让这个文件回到最近一次git commit或git add时的状态。
+			
+			
 			
 		
 		
