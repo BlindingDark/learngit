@@ -390,7 +390,8 @@ help git merge
 		合并的快进模式，也就是直接把master指向dev的当前提交，所以合并速度非常快。
 		当然，也不是每次合并都能Fast-forward
 		【推荐】使用--no-ff -m "备注" <分支名称>
-		这样在master线上就看不到dev线上的内容，这样更加整洁
+		这样在UI界面中，master线上就看不到dev线上的内容，这样更加整洁，
+		使用--graph也更为美观
 	
 		
 		
