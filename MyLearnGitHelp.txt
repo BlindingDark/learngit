@@ -95,6 +95,10 @@ git log
 			--abbrev-commit
 				简化显示
 				不显示完整标识码
+				
+				连用
+					git log --graph --pretty=oneline --abbrev-commit
+					
 
 git reflog
 				用来记录你的每一次更新：
