@@ -33,6 +33,23 @@ git commit
 				$ git add file1.txt
 				$ git add file2.txt file3.txt
 				$ git commit -m "add 3 files."
+				
+git tag
+
+				查看所有标签
+				
+			<标签名>
+				给最新提交的commit添加标签
+			-d <标签名>
+				删除标签
+			
+			-a <标签名> -m "标签备注" <指定版本编码>
+			
+			-s <标签名> -m "标签备注" <指定版本编码>
+			
+git show
+			<标签名>			
+				查看对应标签的详细内容
 
 git status
 
@@ -205,6 +222,17 @@ git push
 					不需绑定
 				$ git push origin master
 				
+			origin <标签名称>
+				推送标签
+					当标签对应的版本没有在远程，远程文件会发送过去
+					
+			origin --tags
+				一次性推送全部尚未推送到远程的本地标签
+			
+			origin :refs/tags/<标签名>
+				删除远程标签名
+			
+			
 git pull 
 				把远程内容拉回本地
 				
@@ -489,4 +517,8 @@ help git pull
 		开工之前先pull一下吧~~~
 		
 		
-		
+help git tag	
+		删除远程标签时，先本地删除
+			$ git tag -d v0.9
+		再远程删除
+			$ git push origin :refs/tags/v0.9
